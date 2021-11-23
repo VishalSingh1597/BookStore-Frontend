@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo&display=swap');
+
+@mixin flex( $display, $alignitems, $justifycontent,$flexdirection ) { // Mixin with defaults
+    display:$display;
+    align-items: $alignitems;
+    justify-content: $justifycontent;
+    flex-direction: $flexdirection;
+  }
+@mixin fontSize($size){
+    font-size: $size;
+}
+
+$box-size: 8px;
+
+.Container{
+    @include flex($display:flex,$alignitems:center,$justifycontent:center,$flexdirection:row);
+    height: 100%;
+    width: 100%;
+}
+.imageBox
+{
+    background: #F5F5F5 0% 0% no-repeat padding-box;
+    border-radius: 21px;
+    opacity: 1;
+    height: 350px;
+    width: 370px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index:1;
+}
+.card{
+    @include flex($display:flex,$alignitems:center,$justifycontent:center,$flexdirection:row);
+    border-radius: 10px;
+    height: 500px;
+    background-color: unset !important;
+    border: unset;
+}
+.registerimage{
+width: 245px;
+height: 265px;
+border-radius: 50%;
+background: #F5F5F5 0% 0% no-repeat padding-box;
+}
+::ng-deep.mat-tab-label, ::ng-deep.mat-tab-label-active{
+    min-width: 0!important;
+    margin: 0px 15px 0px 15px!important;
+   }
+.UserField{
+    height: 480px;
+    width: 400px;
+    box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+    border-radius: 10px;
+    padding: 10px 50px 0 50px;
+    margin-left: -20px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    z-index: 1;
+}
+::ng-deep .mat-tab-label{
+    font-size: 22px !important;
+    font: normal normal medium 25px/33px Roboto;
+ } 
+::ng-deep .remove-border-bottom .mat-tab-header {
+    border-bottom: none!important;
+}
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
+    background: #A03037 0% 0% no-repeat padding-box!important;
+    height: 5px!important;
+    border-radius: 3px!important;
+    width: 40px!important;
+    margin-left: 40px;
+
+}
+.Login{
+    height: 100%;
+    
+}
+.loginFields
+{
+    margin-bottom: 15px;
+    margin-top: 8px;
+}
+.InputField{
+display: block !important;
+border:0;
+border-color: 1px solid black;
+padding-bottom: 0px;
+}
+::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 2px;
+}
+::ng-deep .InputField
+ {
+    .mat-form-field-flex
+     {
+          display: flex;
+          align-items: center;
+          height: 50%;
+          border-radius: 10px!important;
+          font-size: 15.3px;
+          padding: 0.1em !important;
+    }
+    .mat-form-field-underline {
+      width: 0;
+    }
+}
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-infix {
+    background-color: white !important;
+    padding: 5px;
+    border-top: 0 !important;
+    padding: 10px;
+    background-color: white !important;
+    border-top:0;
+}
+.Loginbutton{
+    height:35px !important;
+    font-size: 18px;
+    background: #A03037 0% 0% no-repeat padding-box;
+    border-radius: 3px;
+    opacity: 1;
+    color: white;
+    border: unset;
+}
+.facebook
+{
+    height:35px !important;
+    background: #4266B2 0% 0% no-repeat padding-box;
+    border-radius: 3px;
+    opacity: 1;
+    color: white;
+    border:unset;
+    font-size: 13px;
+    width: 130px;
+}
+.google{
+    height:35px !important;
+    background: #F5F5F5 0% 0% no-repeat padding-box;
+    border: 1px solid #E4E4E4;
+    border-radius: 3px;
+    opacity: 1;
+    font-size: 13px;
+    width: 130px;
+    color: black;
+}
+.divider,.button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.buttons{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+mat-divider {
+    width: 70px;
+}
+.forgotPassword{
+    border:unset;
+    background-color: white;
+    display: flex;
+    justify-content: flex-end;
+    color: #9D9D9D;
+    cursor: pointer;
+}
+.suffixButton{
+    background-color: white;
+    color:#9D9D9D;
+    border: unset;
+    cursor:pointer;
+    border-radius: 0;
+}
+.imagetext{
+    text-align: center;
+    font: normal normal medium 15px Roboto;
+    letter-spacing: 0px;
+    color: #0A0102;
+    text-transform: uppercase;
+    opacity: 1;
+    text-align: right;
+}
+.center
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+@media only screen and (max-width: 800px) 
+{
+    .boxes{
+        display: none!important;
+    }
+    .imageBox
+    {
+        display: none!important;
+    }
+    
+}
+@media only screen and (max-width: 450px) {
+    .UserField{
+        height: 490px;
+        width: 350px;
+    }
+    ::ng-deep .mat-tab-label{
+        font-size: 10px !important;
+        font: normal normal medium 25px/33px Roboto;
+     } 
+     ::ng-deep.mat-tab-label, ::ng-deep.mat-tab-label-active{
+        min-width: 0!important;
+        padding: 10px 30px 10px 30px!important;
+        margin: 3px!important;
+       }
+       ::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
+    
+        margin-left: 25px;
+    
+    }
+}

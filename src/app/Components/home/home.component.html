@@ -1,0 +1,51 @@
+<mat-toolbar class="header">
+    <div class="menu" style="margin-top: 5px;cursor: pointer;" (click)="page='allBooks'">
+        <img src="../../../assets/education.svg" class="image">
+        <mat-card-title style="margin-left: 5px;margin-top: -2px;">
+            <span style="color: #FFFFFF;font-weight:normal;">Bookstore</span>
+        </mat-card-title>
+    </div>
+    <div class="searchBar">
+        <mat-form-field class="search" appearance="fill">
+            <input matInput placeholder="Search" #code [(ngModel)]="bookName" (ngModelChange)="Search()">
+            <mat-icon matPrefix style="margin: 0 10px;">search</mat-icon>
+        </mat-form-field>
+    </div>
+    <div class="endIcons">
+        <div class="icon">
+            <button mat-icon-button class="example-icon favorite-icon iconbutton" [matMenuTriggerFor]="menu"
+                (click)="show()">
+                <mat-icon class="material-icons-outlined" style="font-size: 27px;  color: #FFFF;
+                font-weight: light;">person_outline</mat-icon><br>
+                <p class="noteTitle">{{userdetails != null?
+                    userdetails.customerName:'Profile'}}</p><br>
+            </button>
+        </div>
+        <div class="icon">
+            <button mat-icon-button class="example-icon favorite-icon iconbutton" (click)="page='myCart'">
+                <mat-icon class="material-icons-outlined" style="font-size: 22px;color: #EDD8DA;" matBadge="{{cartlength}}"
+                    matBadgeColor="warn" [matBadgeHidden]="isBadgeHidden">shopping_cart
+                </mat-icon><br>
+                <p class="noteTitle">cart</p>
+            </button>
+        </div>
+    </div>
+</mat-toolbar>
+<mat-menu #menu="matMenu" class="matmenu">
+    <div class="userProfile">
+        <div *ngIf="userdetails == null">
+            <h1 style="font-size: 16px;margin: 0;font-weight: 700;">Welcome</h1>
+            <p style="color: #888888;">To access account and manage orders</p>
+            <button mat-stroked-button style="margin-bottom: 4px;" class="matmenuLoginbutton"
+                [routerLink]="['/login']">LOGIN/SIGNUP</button>
+            <mat-divider style="margin:10px 5px;"></mat-divider>
+        </div>        
+    </div>
+</mat-menu>
+<!-- <div class="homeBody">
+    <app-get-books [bookName]="code.value.toLowerCase()" *ngIf="page=='allBooks'"></app-get-books>
+
+</div> -->
+<footer class="footer">
+    CopyRight &copy; 2021 Cohort B private limited. All rights received
+</footer>

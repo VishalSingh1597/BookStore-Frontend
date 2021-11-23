@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined");
+
+mat-toolbar{
+    display: flex;
+    justify-content: space-around; 
+}
+::ng-deep .search
+ {
+     margin-right:100px;
+     min-width: 550px;
+    .mat-form-field-flex {
+          display: flex;
+          align-items: center;
+          height: 50%;
+          background-color: white;
+          border-radius: 5px!important;
+          font-size: 15.3px;
+          padding: 4px !important;
+          border-top: 0 !important;
+    }
+    .mat-form-field-underline {
+      width: 0;
+    }
+    .mat-form-field-infix {
+         border-top: 0 solid transparent; 
+         padding: 5px !important;
+    }
+    .mat-form-field-wrapper {
+        padding-bottom: unset;
+    }
+}
+
+.image{
+    height:30px;
+    margin-bottom: 11px;
+}
+
+.menu{
+    display: flex;
+    align-items: center;
+}
+.icon{
+    border:0.5px solid #8F2B2F;
+    border-radius: unset;
+    width: 99px;
+    height: 59px;
+    display: flex;
+    justify-content: center;
+}
+.endIcons{
+    display: flex;
+    flex-direction: row;
+}
+.iconbutton {
+        padding: 9px;
+        width: -23px;
+        height: -23px;
+        font-size: 15px;
+        line-height: 22px;
+        display: flex;
+        justify-content: center;
+}
+.noteTitle{
+    color: #FFFF;
+    font-weight: light;
+}
+.userProfile{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    overflow: hidden;
+}
+.matmenuIcons{
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+}
+.maticon{
+    color:#878787 ;
+}
+.matmenuLoginbutton{
+    width:fit-content;
+    border: 1px solid #B35C60;
+    color: #B35C60;
+}
+::ng-deep .matmenu{
+    width:200px;
+    margin-top: 21px !important;
+    display: flex;
+    justify-content: center;
+}
+.bottom{
+    width: 90px !important;
+    min-height: 6px;
+    background-color: white;
+    border-radius: 5px;
+    margin-left: -34px;
+    margin-top: -34px !important;
+}
+.homeBody{
+    margin-top: 38px;
+}
+.header{
+    background-color: #A03037;
+    border-bottom: 1px solid #DADCE0;
+    z-index: 1;
+}
+.searchBar{
+    margin-right:80px ;
+}
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    color: white;
+    
+}
+
+@media only screen and (max-width: 1150px) {
+    ::ng-deep .search
+    {
+        min-width: 350px;
+    }
+}
+@media only screen and (max-width: 950px) {
+    ::ng-deep .search
+    {
+        min-width: 100px;
+    }
+    
+}
+@media only screen and (max-width: 850px) {
+    ::ng-deep .search
+    {
+        min-width: 10px!important;
+    }
+    .header{
+        display: flex;
+        justify-content: space-between!important;
+    }
+    .searchBar{
+        margin-right: -100px;
+    }
+    
+}
