@@ -16,10 +16,10 @@ export class UserServiceService {
   {
     console.log(data);
     const params = {
-      CustomerName: data.FullName,
-      Email: data.EmailId,
+      FullName: data.FullName,
+      EmailId: data.EmailId,
       Password: data.Password,
-      PhoneNumber: data.Phone
+      PhoneNo: data.PhoneNo
     }
     console.log(params);
     return this.httpService.post(`${environment.baseUrl}/api/Users/register`,params);
@@ -27,7 +27,7 @@ export class UserServiceService {
   Login(data:any)
   {
     const params = {
-      Email: data.EmailId,
+      EmailId: data.EmailId,
       Password: data.Password,
     }
     console.log(params);
@@ -48,6 +48,6 @@ export class UserServiceService {
      NewPassword: formData.password
     }
     console.log(params);
-    return this.httpService.put(`${environment.baseUrl}/api/Users/resetpassword`,params);
+    return this.httpService.put(`${environment.baseUrl}/api/User/resetpassword`,params);
   }
 }

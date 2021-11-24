@@ -1,0 +1,39 @@
+<div class="editBook">
+    <div class="imageContainer">
+        <label class="image">
+            <input type="file" name="image" accept="image/*" id="image" style="display:none;"
+            (change)="onFileChanged($event)" />
+            <img [src]="imageSrc" alt=""  class="image"style="width: 187px;max-height: 239px;padding: 5px;">
+        </label>
+    </div>
+    <div class="editContent">
+        <span class="editItems">
+            <label>Book Name</label>
+            <input matInput  [(ngModel)]='data.bookName' class="getInput"/>
+        </span>
+        <span class="editItems">
+            <label>Book Description</label>
+            <textarea cdkTextareaAutosize  [(ngModel)]='data.bookDescription' class="getInput"></textarea>
+        </span>
+        <span class="editItems">
+            <label>Author</label>
+            <input matInput  [(ngModel)]='data.authorName' class="getInput"/>
+        </span>
+        <span class="editItems">
+            <label>Discount Price</label>
+            <input matInput  [(ngModel)]='data.price' class="getInput"/>
+        </span>
+        <span class="editItems">
+            <label>Original Price</label>
+            <input matInput  [(ngModel)]='data.originalPrice' class="getInput"/>
+        </span>
+        <span class="editItems">
+            <label>Available Count</label>
+            <input matInput  [(ngModel)]='data.bookCount' class="getInput"/>
+        </span>
+        <div class="buttons">
+            <button mat-button class="example-icon" (click)="Close()">Close</button>
+            <button mat-button class="example-icon" style="margin-left:10px;color:#3367D6" (click)="Save()">Save</button>
+        </div>
+    </div>
+</div>

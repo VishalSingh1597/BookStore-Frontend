@@ -29,7 +29,7 @@ export class LoginRegisterComponent implements OnInit {
       FullName: new FormControl('',[ Validators.required]),
       EmailId: new FormControl('',[Validators.required, Validators.email]),
       Password:new FormControl('', [Validators.required, Validators.minLength(6)]),
-      Phone:new FormControl('',[Validators.required,Validators.pattern("^[6-9]{1}[0-9]{9}$")])
+      PhoneNo:new FormControl('',[Validators.required,Validators.pattern("^[6-9]{1}[0-9]{9}$")])
     });
     this.LoginForm = new FormGroup({
      EmailId: new FormControl('',[Validators.required, Validators.email]),
@@ -110,7 +110,7 @@ getErrorMessageRegister(inputName:string) {
     this.userService.Login(this.LoginForm.value)
     .subscribe((result:any)=>{
       console.log(result);
-      if(result.data.isAdmin)
+      if(result.data)
       {
         localStorage.setItem('userDetails',JSON.stringify(result.data));
         localStorage.setItem('token',JSON.stringify(result.resultMessage));
@@ -121,7 +121,7 @@ getErrorMessageRegister(inputName:string) {
         });
         if(result.status == true)
         {
-          this.router.navigate(['/admin']);
+          this.router.navigate(['/home']);
         }
       }
       else

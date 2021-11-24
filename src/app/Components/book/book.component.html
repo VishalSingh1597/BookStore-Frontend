@@ -1,0 +1,84 @@
+<div class="Content">
+    <div class="Container">
+        <div class="navigatebuttons">
+            <span (click)="changePage()" class="homebutton">Home/</span>
+            <span class="book">Book ({{book.bookId}})</span>
+        </div>
+        <div class="BookPage">
+            <div class="images">
+                <div class="imageouterbox">
+                    <img src="{{book.image}}" class="showimage">
+                </div>
+                <div class="imageouterbox">
+                    <img src="{{book.image}}" class="showimage">
+                </div>
+            </div>
+            <div class="bookItem">
+                <div class="bookImage" [style.background-color]="book.bookCount==0?outColor:defaultColor">
+                    <img src="{{book.image}}" class="image">
+                    <span class="outOfStock" *ngIf="book.bookCount==0">OUT OF STOCK</span>
+                </div>
+                <div class="bookimageBottomButton">
+                    <div class="buttons">
+                        <button type="submit" mat-raised-button class="actionButton addtobag" (click)="AddToCart(book)"
+                            *ngIf="book.bookCount!=0">{{bookPresent==null?'ADD TO BAG':'GO TO CART'}}</button>
+                        <button type="submit" mat-raised-button class="actionButton addtobag"
+                            *ngIf="book.bookCount==0">NOTIFY ME</button>
+                        <button type="submit" mat-raised-button class="actionButton wishlist"
+                            (click)="AddToWishList(book)">
+                            <mat-icon>favorite</mat-icon> WISHLIST
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="bookDetails">
+                <div class="BookContent">
+                    <p class="bookTitle">{{book.bookName}}</p>
+                    <p class="bookAuthor">by {{book.authorName}}</p>
+                    <span class="bookRatingContainer">
+                        <span class="bookRating">
+                            {{book.rating}} ★
+                        </span>
+                        <span class="count">({{reviews.length}})</span>
+                    </span>
+                    <span class="price">
+                        <p class="bookprice">₹&nbsp;{{book.price}}</p>
+                        <p class="strike"><s>₹&nbsp;{{book.originalPrice}}</s></p>
+                    </span>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="BookDescription">
+                    <span class="bookdetail">
+                        <span class="dotemoji">⚪</span>
+                        <p>Book Detail</p>
+                    </span>
+                    <p class="description">{{book.bookDescription}}</p>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="Feedback">
+                    <h1>Customer Feedback</h1>
+                    <div class="customerfeedback">
+                        <p style="font-weight: 450;">Overall rating</p>
+                        <!-- <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false"></ngb-rating><br> -->
+                        <textarea cdkTextareaAutosize placeholder="Write your review" class="noteTitle" class="textarea"
+                            [(ngModel)]="feedback"></textarea>
+                        <div class="buttonContainer">
+                            <button type="submit" mat-raised-button class="button"
+                                (click)="AddCustomerFeedBack();">Submit</button>
+                        </div>
+                    </div>
+                    <div class="reviews" *ngFor="let review of reviews">
+                        <div>
+                            <mat-icon>account_circle</mat-icon>
+                        </div>
+                        <div style="margin-left:5px ;">
+                            <p class="username">{{review.customerName}}</p>
+                            <!-- <ngb-rating [max]="5" [(rate)]="review.rating" [readonly]="true"></ngb-rating><br> -->
+                            <p>{{review.feedback}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

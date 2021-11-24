@@ -1,0 +1,43 @@
+<div class="booksContainer">
+    <div class="row">
+        <span class="titleRow">
+            <h1>Books</h1>
+            <p style="color:#BEBEBE">&nbsp;({{books.length}} items)</p>
+        </span>
+        <span>
+            <!-- <select name="sort" id="sort" class="sortTag" #sel (change)="ChangeOrder(sel.value)">
+                <option [disabled]="true">Sort by relevance</option>
+                <option value="1">Price: Low To High</option>
+                <option value="2">Price: High To Low</option>
+                <option value="3">Newest Arrival</option>
+            </select> -->
+        </span>
+    </div>
+    <div class="allBooks">
+        <div class="book" *ngFor="let book of books "
+            (click)="ViewBook(book)">
+            <mat-card class="bookCard" [style.background-color]="book.bookCount==0?outColor:defaultColor">
+                <div class="imageContainer" matTooltip="QUICK VIEW">
+                    <img src="{{book.image}}" style="margin: 10px;" class="image" />
+                    <span class="outOfStock" *ngIf="book.bookCount==0">OUT OF STOCK</span>
+                </div>
+                <div class="BookContent">
+                    <p class="bookTitle">{{book.bookName}}</p>
+                    <p class="bookAuthor">by {{book.authorName}}</p>
+                    <span class="bookRatingContainer">
+                        <span class="bookRating">
+                            {{book.rating}} ★
+                        </span>
+                    </span>
+                    <span class="price">
+                        <p>₹&nbsp;{{book.price}}</p>
+                        <p class="strike"><s>₹.&nbsp;{{book.originalPrice}}</s></p>
+                    </span>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+    <!-- <div class="paginator">
+        <pagination-controls class="pagi" (pageChange)="p = $event"></pagination-controls>
+    </div> -->
+</div>

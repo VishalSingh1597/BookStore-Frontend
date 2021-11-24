@@ -1,0 +1,33 @@
+<div class="addBook">
+    <div class="imageContainer">
+        <label class="image">
+            <input type="file" name="image" accept="image/*" id="image" style="display:none;"
+            (change)="onFileChanged($event)" />
+            <img [src]="imageSrc || '../../../assets/add image.png'" alt=""  class="image">
+        </label>
+    </div>
+    <div class="addContent" [formGroup]="AddBookForm">
+        <span class="addItems">
+            <input matInput   placeholder="Book Name"  formControlName="Title" class="getInput"/>
+        </span>
+        <span class="addItems">
+            <textarea cdkTextareaAutosize   placeholder="Description" formControlName="Description" class="getInput" rows="5"></textarea>
+        </span>
+        <span class="addItems">
+            <input matInput   placeholder="Author Name" formControlName="Author" class="getInput"/>
+        </span>
+        <span class="addItems">
+            <input matInput  placeholder="Price" formControlName="Price" class="getInput"/>
+        </span>
+        <span class="addItems">
+            <input matInput   placeholder="Original Price"  formControlName="OriginalPrice" class="getInput"/>
+        </span>
+        <span class="addItems">
+            <input matInput   placeholder="Book Count" formControlName="BookCount" class="getInput"/>
+        </span>
+        <div class="buttons">
+            <button mat-button class="example-icon" (click)="Close()">Close</button>
+            <button mat-button class="example-icon" (click)="AddBook()" style="margin-left:10px">Save</button>
+        </div>
+    </div>
+</div>

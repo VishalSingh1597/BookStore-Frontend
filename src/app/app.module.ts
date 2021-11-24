@@ -29,6 +29,11 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
+import { GetBooksComponent } from './Components/get-books/get-books.component';
+import { BookComponent } from './Components/book/book.component';
+import { AddBookComponent } from './Components/add-book/add-book.component';
+import { EditBookComponent } from './Components/edit-book/edit-book.component';
+
 
 
 @NgModule({
@@ -37,7 +42,12 @@ import {MatDialogModule} from '@angular/material/dialog';
     LoginRegisterComponent,
     HomeComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    GetBooksComponent,
+    BookComponent,
+    AddBookComponent,
+    EditBookComponent,
+
   ],
   imports: [
     BrowserModule,

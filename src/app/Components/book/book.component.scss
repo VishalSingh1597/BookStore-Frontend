@@ -1,0 +1,188 @@
+@mixin displayFlex($property:flex, $direction:row,$justifyContent:center,$alignItems:center) {
+    display: $property;
+    flex-direction:$direction;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+  }
+  .Content{
+    @include displayFlex($direction:unset,$justifyContent:center,$alignItems:unset);
+  }
+.Container
+{
+    margin: 10px;
+    @include displayFlex($direction:column,$justifyContent:space-between,$alignItems:unset);
+    padding-bottom: 15px;
+    width: 70%;
+}
+.outOfStock{
+    background-color: white;
+    padding:5px 20px 5px 20px;
+    font-weight: 600;
+    margin: 123px 0px 0px -167px;
+    position: absolute;
+    z-index: 10;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+.navigatebuttons{
+    @include displayFlex($direction:row,$justifyContent:flex-start);
+    .homebutton{
+       font-size: 15px;
+       color: #9D9D9D;
+       cursor: pointer !important;
+    }
+    .book{
+     font-size: 15px;
+     font-weight: bold;
+    }
+}
+.BookPage{
+    margin-top: 15px;
+    @include displayFlex($direction:row,$justifyContent:unset,$alignItems:unset);
+}
+.bookImage{
+    border:1px solid #E6E6E6;
+    padding: 25px 40px;
+    width: fit-content;
+    position: relative;
+    .image
+    {
+        height:280px;
+    }
+}
+.buttons{
+    @include displayFlex($direction:row,$justifyContent:space-between,$alignItems:center);
+    padding-top:15px;
+}
+.addtobag{
+    background-color: #A03037;
+    color: #fff;
+    @include displayFlex($alignItems:center);
+    font-size: 15px;
+    font-weight: normal;
+    border-radius: 2px !important;
+}
+.wishlist{
+    background-color: #333333;
+    color: #fff;
+    @include displayFlex($direction:row,$alignItems:center);
+    font-size: 15px;
+    font-weight: normal;
+    border-radius: 2px !important;
+}
+.bookDetails{
+    padding-left:25px ;
+}
+.BookContent{
+    color:black;
+}
+.bookTitle{
+    font-weight: 400;
+    font-size: 27px;
+    margin: 0;
+}
+.bookAuthor{
+    color: #9C9C9C;
+    margin-top: 15px;
+    font-size: 18px;
+}
+.bookRatingContainer{
+    margin: 2px;
+    display: flex;
+    align-items: center;
+}
+.bookRating
+{
+    background-color: #388E3C;
+    border-radius: 3px;
+    padding: 3px 9px 1px 9px;
+    color: #FFFFFF;
+    font-weight: 500;
+}
+.price{
+    margin-top: 22px;
+    font-weight: 500;
+    font-size: 15px;
+    @include displayFlex($direction:row,$justifyContent:unset,$alignItems:center);
+    width: 47%;
+}
+.bookprice{
+    font-size: 26px;
+}
+.count{
+    color:#9C9C9C;
+    margin-left: 10px;
+    font-size: 15px;
+}
+.strike{
+    margin-left: 15px;
+    font-size: 15px;
+    color:#9C9C9C;
+}
+.BookDescription{
+    margin:30px 0 ;
+    .bookdetail{
+        @include displayFlex($direction:row,$justifyContent:unset,$alignItems:unset);
+        font-size: 17px;
+        color:#9C9C9C;
+    }
+    .description{
+        margin-top: 0;
+        margin-left: 20px;
+        font-size: 16px;
+        color: #3E3B3B;
+    }
+}
+.dotemoji{
+    font-size: 9px;
+    color:#9C9C9C;
+    margin-right:5px ;
+}
+.images{
+    @include displayFlex($direction:column,$justifyContent:unset,$alignItems:unset);
+}
+.imageouterbox{
+ padding: 5px 4px 0px 5px;;
+border:1px solid #E6E6E6;
+}
+.showimage{
+    height:35px
+}
+.customerfeedback{
+padding: 10px;
+background-color: #F9F9F9;
+}
+ngb-rating {
+    color: #FFC107;
+    font-size: 30px;
+    border-color:  grey;
+}
+.textarea{
+    padding: 5px;
+    background-color: white;
+    height: 60px !important;
+    width: 100%;
+    border: unset;
+}
+.buttonContainer{
+    @include displayFlex($justifyContent:flex-end,$alignItems:unset);
+    .button{
+        background-color: #3371B5;
+        color: #fff;
+    }
+}
+.reviews{
+    margin-top: 5px;
+    @include displayFlex($direction:row,$justifyContent:unset,$alignItems:unset);
+}
+
+.profile{
+   border-radius: 50%;
+   height:20px;
+   width:20px;
+   border:1px solid black;
+}
+.username{
+    margin-top: 2px;
+    font-weight: 500;
+    font-size:17px;
+}

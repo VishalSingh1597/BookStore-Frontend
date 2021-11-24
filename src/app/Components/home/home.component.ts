@@ -36,15 +36,6 @@ export class HomeComponent implements OnInit {
 show(){
   this.open=!this.open;
 }
-Logout()
-{
-  localStorage.removeItem('userDetails');
-  localStorage.removeItem('token');
-  this.router.navigate(['/home']);
-  this.userdetails = null;
-  this.isBadgeHidden = true;
-  this.CartList = null;
-}
 Search()
 {
   console.log(this.bookName,"home");
