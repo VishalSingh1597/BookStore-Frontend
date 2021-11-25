@@ -1,0 +1,215 @@
+<div class="maincontent" *ngIf="!check">
+    <div class="middleItem">
+        <h2 style="margin: 0 0 10px 0;">PLEASE LOG IN</h2>
+        <P class="p-tag">Login to view items in your Cart</P>
+        <img src="../../../assets/component (1).png" style="width: 70px;margin: 0 0 15% 0;" log="wishlisticon">
+        <button mat-stroked-button color="warn"  [routerLink]="'/login'">LOGIN/SIGNUP</button>
+    </div>
+</div>
+<div class="MainContainer" *ngIf="check">
+    <div class="row">
+        <div (click)="changePage()" style="color: #9C9C9C;cursor: pointer;">Home</div>
+        <div><span style="font-size: 18px;">/</span><span class="home">My cart</span></div>
+    </div>
+    <div class="cartContainer" *ngIf="showCart==false" (click)="showCart=true">
+        <mat-card class="cartCard">
+            <h3>My Cart</h3>
+        </mat-card>
+    </div>
+    <div class="cartContainer" *ngIf="showCart">
+        <mat-card class="cartCard">
+            <div class="cartTitle">
+                <h3>My cart ({{CartList.length}})</h3>
+            </div>
+            <div class="cartBookContent" *ngFor="let book of CartList">
+                <span>
+                    <img src="{{book.books.image}}" class="image" />
+                </span>
+                <div class="bookContent">
+                    <p class="bookTitle">{{book.books.bookName}}</p>
+                    <p class="bookAuthor">by {{book.books.authorName}}</p>
+                    <span class="price">
+                        <h2>₹.&nbsp;{{book.books.price}}</h2>
+                        <p class="strike"><s>₹.&nbsp;{{book.books.originalPrice}}</s></p>
+                    </span>
+                    <div class="numberOfBooks">
+                        <span class="button" (click)="UpdateOrderCount(false,book.cartID)">-</span>
+                        <input type="text" class="countOfOrder" [disabled]="true" [(ngModel)]="book.bookOrderCount">
+                        <span class="button" (click)="UpdateOrderCount(true,book.cartID)">+</span>
+                        <button mat-button (click)="RemoveCartItem(book.cartID)">Remove</button>
+                    </div>
+                </div>
+            </div>
+            <div class="place">
+                <button mat-raised-button color="primary" (click)="PlaceOrder()">PLACE ORDER</button>
+            </div>
+        </mat-card>
+    </div>
+    <div class="cartContainer" *ngIf="showCustomerDetails==false">
+        <mat-card class="cartCard">
+            <h3>Customer Details</h3>
+        </mat-card>
+    </div>
+    <div class="cartContainer" *ngIf="showCustomerDetails">
+        <mat-card class="cartCard">
+            <div class="cartTitle">
+                <h3>Customer Details</h3>
+            </div>
+            <div class="cartBookContent">
+                <div class="userDetails">
+                    <div>
+                        <label>FullName</label>
+                        <input type="text" [(ngModel)]="userdetails.customerName">
+                    </div>
+                    <div>
+                        <label>Phone Number</label>
+                        <input type="text" [(ngModel)]="userdetails.phoneNumber">
+                    </div>
+                </div>
+                </div>
+                <div class="formContent" >
+                    <div class="header">
+                        <h1>Address Details</h1>
+                        <button mat-stroked-button style="border-color: #A03037;color:#A03037"
+                            (click)="OpenAddressForm=true">Add New Address</button>
+                    </div>
+                    <div class="NewAddress" *ngIf="OpenAddressForm">
+                        <div class="header">
+                            <div class="sub-header">
+                                <h2>New Address</h2>
+                            </div>
+                            <div class="closeButton">
+                            <button mat-raised-button color="primary" (click)="Close()">CLOSE</button>
+                            </div>
+                            <button mat-raised-button color="primary" (click)="AddAddress();">SAVE</button>
+                        </div>
+                        <div class="formField">
+                            <mat-label>Address</mat-label>
+                            <mat-form-field appearance="outline" class="inputField">
+                                <textarea matInput type="text" [(ngModel)]="updateAddress.address"></textarea>
+                            </mat-form-field>
+                        </div>
+                        <div class="formField addressField">
+                            <div class="placeField" style="width: 50%; margin-right: 10px;">
+                                <mat-label>City/Town</mat-label>
+                                <mat-form-field appearance="outline" class="inputField">
+                                    <input matInput type="text" [(ngModel)]="updateAddress.city">
+                                </mat-form-field>
+                            </div>
+                            <div class="placeField" style="width: 50%;">
+                                <mat-label>State</mat-label>
+                                <mat-form-field appearance="outline" class="inputField">
+                                    <input matInput [(ngModel)]="updateAddress.state">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="formField">
+                            <mat-label>Type</mat-label>
+                            <mat-radio-group aria-label="Select an option" class="typeField"
+                                [(ngModel)]="updateAddress.type">
+                                <mat-radio-button value="Home">Home</mat-radio-button>
+                                <mat-radio-button value="Work">Work</mat-radio-button>
+                                <mat-radio-button value="Other">Other</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                    </div>
+                    <div class="Address">
+                        <div class="AddressAsParagraph" *ngIf="!openAddressDetail">
+                            <div *ngFor="let adress of data;let i=index" (click)="showAddressDetails(adress,i)">
+                                <mat-radio-button class="addressType" value="addressdetails.addressId">
+                                    {{i+1}}.{{adress.type}}</mat-radio-button>
+                                <h2 class="addressTitle">Address</h2>
+                                <p class="addressdetails">{{adress.address}}</p>
+                            </div>
+                        </div>
+                        <div class="ShowAddress" *ngIf="openAddressDetail">
+                            <div class="header">
+                                <div class="sub-header">
+                                    <mat-radio-button class="addressType" value="uniqueAddress.addressId">
+                                        {{index+1}}.{{uniqueAddress.type}}</mat-radio-button>
+                                    <p (click)="addressDisable=false;data=this.addressdetails" *ngIf="addressDisable"
+                                        style="margin-top: 7px;">Edit
+                                    </p>
+                                    <p (click)="addressDisable=true;data=this.addressdetails" *ngIf="!addressDisable"
+                                        style="margin-top: 7px;">Cancel
+                                    </p>
+                                </div>
+                                <div class="closeButton">
+                                    <button mat-raised-button color="primary" (click)="Cancel()">CANCEL</button>
+                                </div>
+                                    <button mat-raised-button color="primary" *ngIf="!addressDisable"
+                                        (click)="EditAddress();addressDisable=!addressDisable">SAVE</button>
+                                
+                            </div>
+                            <div class="formField">
+                                <mat-label>Address</mat-label>
+                                <mat-form-field appearance="outline" class="inputField">
+                                    <textarea matInput type="text" [disabled]="addressDisable"
+                                        [(ngModel)]="uniqueAddress.address"></textarea>
+                                </mat-form-field>
+                            </div>
+                            <div class="formField addressField">
+                                <div class="placeField" style="width: 50%; margin-right: 10px;">
+                                    <mat-label>City/Town</mat-label>
+                                    <mat-form-field appearance="outline" class="inputField">
+                                        <input matInput type="text" [disabled]="addressDisable"
+                                            [(ngModel)]="uniqueAddress.city">
+                                    </mat-form-field>
+                                </div>
+                                <div class="placeField" style="width: 50%;">
+                                    <mat-label>State</mat-label>
+                                    <mat-form-field appearance="outline" class="inputField">
+                                        <input matInput type="text" [disabled]="addressDisable"
+                                            [(ngModel)]="uniqueAddress.state">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="formField">
+                                <mat-label>Type</mat-label>
+                                <mat-radio-group aria-label="Select an option" class="typeField"
+                                    [(ngModel)]="uniqueAddress.type" [disabled]="addressDisable">
+                                    <mat-radio-button value="Home">Home</mat-radio-button>
+                                    <mat-radio-button value="Work">Work</mat-radio-button>
+                                    <mat-radio-button value="Other">Other</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="place">
+                <button mat-raised-button color="primary" (click)="confirmUserdeatils()">CONTINUE</button>
+            </div>
+        </mat-card>
+    </div>
+    <div class="cartContainer" *ngIf="showOrderSummary==false">
+        <mat-card class="cartCard">
+            <h3>Order Summary</h3>
+        </mat-card>
+    </div>
+    <div class="cartContainer" *ngIf="showOrderSummary">
+        <mat-card class="cartCard">
+            <div class="cartTitle">
+                <h3>Order Summary</h3>
+            </div>
+            <div class="cartBookContent" *ngFor="let book of CartList">
+                <span>
+                    <img src="{{book.books.image}}" class="image" />
+                </span>
+                <div class="bookContent">
+                    <p class="bookTitle">{{book.books.bookName}}</p>
+                    <p class="bookAuthor">by {{book.books.authorName}}</p>
+                    <span class="price">
+                        <h2>₹.&nbsp;{{book.books.price}}</h2>
+                        <p class="strike"><s>₹.&nbsp;{{book.books.originalPrice}}</s></p>
+                    </span>
+                </div>
+            </div>
+            <div>
+                <h2>Total Price To Pay</h2>&nbsp; {{price}}
+            </div>
+            <div class="place">
+                <button mat-raised-button color="primary" (click)="Checkout()">CHECKOUT</button>
+            </div>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,227 @@
+@mixin displayFlex($property:flex, $direction:row,$justifyContent:center,$alignItems:center) {
+    display: $property;
+    flex-direction:$direction;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+  }
+
+  .MainContainer{
+    margin: 10px;
+    @include displayFlex($direction:column,$justifyContent:flex-start,$alignItems:center);
+    padding-bottom: 15px;
+}
+.row{
+    width: 96% !important;
+    @include displayFlex($direction:row,$justifyContent:start,$alignItems:center);
+}
+.home{
+    font-weight: 600;
+}
+.cartContainer
+{
+    width: 80%;
+    margin-top: 20px;
+}
+.cartCard{
+    width: 65%;
+    border: 1px solid #DDDDDD;
+}
+ .cartTitle
+{
+    @include displayFlex($direction:row,$justifyContent:space-between,$alignItems:center);
+}
+.image{
+    height: 120px;
+    margin: 10px;
+}
+.cartBookContent{
+    @include displayFlex($direction:row,$justifyContent:flex-start,$alignItems:start);
+    width: 100%;
+    margin-top: 10px;
+}
+.bookTitle{
+    font-weight: 450;
+    font-size: 15px;
+    margin: 0;
+}
+.bookAuthor{
+    color: #9C9C9C;
+    margin: 2px;
+}
+.bookContent{
+    @include displayFlex($direction:column,$justifyContent:flex-start,$alignItems:start);
+    height: 100%;
+    margin-top: 10px;
+    margin-left: 28px;
+}
+.price{
+    font-weight: 500;
+    font-size: 15px;
+    margin-top: 10px;
+    @include displayFlex($direction:row,$justifyContent:space-between,$alignItems:center);
+    width: 47%;
+    margin-left: 7px;
+}
+.strike{
+    color:#9C9C9C;
+    margin-left: 10px;
+}
+.button{
+    border-radius: 50%;
+    padding: 3px 8px 3px 8px;
+    margin: 5px;
+    background-color: #FAFAFA;
+    border: 1px solid #DDDDDD;
+    cursor: pointer;
+}
+.countOfOrder
+{
+    width: 35px;
+    background-color: #FAFAFA;
+    border: 1px solid #DDDDDD;
+    outline: none;
+    text-align: center;
+}
+.place
+{
+    display: flex;
+    justify-content: flex-end;
+}
+.userDetails
+{
+    width: 57%;
+    @include displayFlex($direction:row,$justifyContent:space-between,$alignItems:center);
+    label{
+        padding: 0;
+        margin: 0;
+        font-size: 13px;
+        font-weight: 500;
+    }
+    input{
+        padding: 8px;
+        margin: 0;
+    }
+    div{
+        @include displayFlex($direction:column,$justifyContent:unset,$alignItems:start);
+    }
+}
+.formContent{
+    margin-top: 20px;
+    width:200%;
+}
+.mainContainer{
+    padding-bottom: 10% !important;
+}
+.formField{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.sub-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 50%;
+    p{
+        margin-left: 10px;
+        cursor: pointer;
+        color: #A03037;
+    }
+}
+
+.editAddress{
+    color: "#A03037";
+    border-color: "#A03037";
+}
+.inputField{
+    background-color: #F5F5F5;
+    border-radius: 2px;
+}
+
+::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 0px !important;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: 0 0 !important; 
+}
+
+.addressField{
+    display: flex;
+    flex-direction: row;
+}
+
+.placeField{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 15%;
+}
+mat-label{
+    margin-bottom: 5px;
+}
+
+.row{
+   width: 80%; 
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   flex-direction: row;
+   margin-left: 203px;
+}
+.addressType{
+    font-size: 20px;
+    font-weight: 550;
+    margin: 0;
+}
+.addressTitle{
+    font-size: 18px;
+    margin-top: 5px;
+    font-size: 500;
+    margin-left: 28px;
+}
+.addressdetails
+{
+    font: normal normal normal 16px Roboto;
+    letter-spacing: 0px;
+    color: #0A0102;
+    opacity: 1;
+    width: 600px;
+    margin-left: 28px;
+}
+.closeButton{
+    margin-left: 173px;
+}
+.middleItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.maincontent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 12%;
+    padding-bottom: 7%;
+  
+}
+.p-tag {
+    font: normal normal normal 15px/20px Roboto;
+    letter-spacing: 0px;
+    color: #9d9d9d;
+    margin: 0 0 18% 0;
+}

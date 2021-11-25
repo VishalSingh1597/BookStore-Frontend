@@ -10,7 +10,7 @@ export class BookServiceService {
 
   constructor(private httpService:HttpServiceService , private router:Router) { }
   userdetails=JSON.parse(localStorage.getItem('userDetails')!);
-  //uid = this.userdetails.userId;
+  uid = this.userdetails.userId;
   // header = {
   //   headers:{ Authorization:"Bearer " + JSON.parse(localStorage.getItem('token')!)}
   // };

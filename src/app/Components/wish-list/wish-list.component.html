@@ -1,0 +1,43 @@
+<div class="maincontent" *ngIf="!check">
+    <div class="middleItem">
+        <h2 style="margin: 0 0 10px 0;">PLEASE LOG IN</h2>
+        <P class="p-tag">Login to view items in your wishlist</P>
+        <img src="../../../assets/component (1).png" style="width: 70px;margin: 0 0 15% 0;" log="wishlisticon">
+        <button mat-stroked-button color="warn"  [routerLink]="'/login'">LOGIN/SIGNUP</button>
+    </div>
+</div>
+<div class="wishListContainer"  *ngIf="check">
+
+    <div class="row">
+        <div (click)="changePage()" style="color: #9C9C9C;cursor: pointer;">Home</div>
+        <div><span style="font-size: 18px;">/</span><span class="home">Wishlist</span></div>
+    </div>
+
+    <div class="wishList">
+        <div class="wishListHeader">
+            <h2>My Wishlist ({{wishList.length}})</h2>
+        </div>
+        <div class="items">
+            <mat-card class="wishListCard" *ngFor="let book of wishList">
+                <div class="wishListBook">
+                    <span>
+                        <img src="{{book.books.image}}" class="image" />
+                    </span>
+                    <div class="bookContent">
+                        <p class="bookTitle">{{book.books.bookName}}</p>
+                        <p class="bookAuthor">by {{book.books.authorName}}</p>
+                        <span class="price">
+                            <h2>₹.&nbsp;{{book.books.price}}</h2>
+                            <p class="strike"><s>₹.&nbsp;{{book.books.originalPrice}}</s></p>
+                        </span>
+                    </div>
+                </div>
+                <span>
+                    <button mat-icon-button class="example-icon favorite-icon" matTooltip="Remove From WishList" (click)="RemoveFromWishList(book.wishListId)">
+                        <mat-icon mat-list-icon class="material-icons-outlined">delete</mat-icon>
+                    </button>
+                </span>
+            </mat-card>
+        </div>
+    </div>
+</div>

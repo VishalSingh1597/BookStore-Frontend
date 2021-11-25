@@ -1,0 +1,99 @@
+@mixin displayFlex($property:flex, $direction:row,$justifyContent:center,$alignItems:center) {
+    display: $property;
+    flex-direction:$direction;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+  }
+.wishListContainer{
+    margin: 10px;
+    @include displayFlex($direction:column,$justifyContent:space-between,$alignItems:center);
+    padding-bottom: 15px;
+}
+.row{
+    width: 80%;
+    @include displayFlex($direction:row,$justifyContent:start,$alignItems:center);
+}
+.home{
+    font-weight: 600;
+}
+.wishList{
+    width: 80%;
+    @include displayFlex($direction:row,$justifyContent:flex-start,$alignItems:center);
+    flex-wrap: wrap;
+    
+}
+.image{
+    height: 120px;
+    margin: 10px;
+}
+.wishListHeader{
+    margin-top: 15px;
+    min-height: 60px;
+    min-width: 100%;
+    @include displayFlex($direction:row,$justifyContent:flex-start,$alignItems:center);
+    background: #F5F5F5 0% 0% no-repeat padding-box;
+    border: 1px solid #E4E4E4;
+    border-radius: 1px;
+    opacity: 1;
+    h2{
+        margin-left: 25px;
+    }
+}
+.items{
+    min-width: 100%;
+}
+.wishListCard{
+    @include displayFlex($direction:row,$justifyContent:space-between,$alignItems:start);
+    min-height: 140px;
+    margin-top: 1px;
+}
+.bookTitle{
+    font-weight: 450;
+    font-size: 15px;
+    margin: 0;
+}
+.bookAuthor{
+    color: #9C9C9C;
+    margin: 2px;
+}
+.bookContent{
+    @include displayFlex($direction:column,$justifyContent:flex-start,$alignItems:start);
+    height: 100%;
+    margin-top: 10px;
+    margin-left: 28px;
+}
+.price{
+    font-weight: 500;
+    font-size: 15px;
+    margin-top: 25px;
+    @include displayFlex($direction:row,$justifyContent:space-between,$alignItems:center);
+    width: 47%;
+    margin-left: 7px;
+}
+.strike{
+    color:#9C9C9C;
+    margin-left: 10px;
+}
+.wishListBook{
+    @include displayFlex($direction:row,$justifyContent:flex-start,$alignItems:start);
+}
+.middleItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.maincontent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 12%;
+    padding-bottom: 7%;
+  
+}
+.p-tag {
+    font: normal normal normal 15px/20px Roboto;
+    letter-spacing: 0px;
+    color: #9d9d9d;
+    margin: 0 0 18% 0;
+}

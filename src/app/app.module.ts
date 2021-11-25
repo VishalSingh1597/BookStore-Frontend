@@ -33,6 +33,9 @@ import { GetBooksComponent } from './Components/get-books/get-books.component';
 import { BookComponent } from './Components/book/book.component';
 import { AddBookComponent } from './Components/add-book/add-book.component';
 import { EditBookComponent } from './Components/edit-book/edit-book.component';
+import { UserProfileComponent } from './Components/user-profile/user-profile.component';
+import { MyCartComponent } from './Components/my-cart/my-cart.component';
+import { WishListComponent } from './Components/wish-list/wish-list.component';
 
 
 
@@ -47,6 +50,9 @@ import { EditBookComponent } from './Components/edit-book/edit-book.component';
     BookComponent,
     AddBookComponent,
     EditBookComponent,
+    UserProfileComponent,
+    MyCartComponent,
+    WishListComponent
 
   ],
   imports: [
