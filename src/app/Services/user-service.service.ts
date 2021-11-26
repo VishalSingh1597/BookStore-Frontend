@@ -48,7 +48,7 @@ export class UserServiceService {
      NewPassword: formData.password
     }
     console.log(params);
-    return this.httpService.put(`${environment.baseUrl}/api/User/resetpassword`,params);
+    return this.httpService.put(`${environment.baseUrl}/api/Users/resetpassword`,params);
   }
   GetUserAddress(userId:any){
     return this.httpService.get(`${environment.baseUrl}/api/Address/getUserAddress?userId=${userId}`);

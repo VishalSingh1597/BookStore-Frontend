@@ -36,6 +36,15 @@ export class HomeComponent implements OnInit {
 show(){
   this.open=!this.open;
 }
+Logout()
+{
+  localStorage.removeItem('userDetails');
+  localStorage.removeItem('token');
+  this.router.navigate(['/home']);
+  this.userdetails = null;
+  this.isBadgeHidden = true;
+  this.CartList = null;
+}
 Search()
 {
   console.log(this.bookName,"home");
@@ -43,6 +52,7 @@ Search()
   {
     
       this.statusdata.changeStatus(true);
+      // this.bookName=" ";
    
   }
   else{
@@ -52,7 +62,7 @@ Search()
 }
 getBooks()
   {
-    this.bookService.GetBooks().subscribe(
+    this.bookService.GetCartItem().subscribe(
       (result:any)=>{
         this.CartList = result.data;
         this.cartlength=this.CartList.length;

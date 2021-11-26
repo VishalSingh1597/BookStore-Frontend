@@ -14,7 +14,7 @@
         </span>
     </div>
     <div class="allBooks">
-        <div class="book" *ngFor="let book of books "
+        <div class="book" *ngFor="let book of returnedBooks "
             (click)="ViewBook(book)">
             <mat-card class="bookCard" [style.background-color]="book.bookCount==0?outColor:defaultColor">
                 <div class="imageContainer" matTooltip="QUICK VIEW">

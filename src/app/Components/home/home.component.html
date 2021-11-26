@@ -44,6 +44,10 @@
 </mat-menu>
 <div class="homeBody">
     <app-get-books [bookName]="code.value.toLowerCase()" *ngIf="page=='allBooks'"></app-get-books> 
+    <app-wish-list *ngIf="page=='wishList'"></app-wish-list>
+    <app-user-profile *ngIf="page=='userProfile'"></app-user-profile>
+    <app-book [bid]="bid" [cartItems] = "CartList" *ngIf="page=='viewBook'"></app-book>
+    <app-my-cart *ngIf="page=='myCart'"></app-my-cart>
 
 </div> 
 <footer class="footer">

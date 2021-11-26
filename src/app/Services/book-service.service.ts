@@ -28,7 +28,7 @@ export class BookServiceService {
   }
   GetCartItem()
   {
-    console.log('token:',this.header);
+   
     return this.httpService.get(`${environment.baseUrl}/api/Cart/GetCartItem?userId=${this.userdetails==null?null:this.userdetails.customerId}`,null,true,this.header);
   }
   GetBookDetails(id:any)
