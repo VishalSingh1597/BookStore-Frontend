@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BookServiceService } from 'src/app/Services/book-service.service';
+import { Router } from '@angular/router';
 import { DataSharingServiceService } from 'src/app/Services/data-sharing.service';
 import { HomeComponent } from '../home/home.component';
 
@@ -16,7 +17,7 @@ export class GetBooksComponent implements OnInit {
   display=1;
   reviewLength:any;
   res:any;
-  constructor(private bookService:BookServiceService,private home:HomeComponent,
+  constructor(private router:Router,private bookService:BookServiceService,private home:HomeComponent,
     private statusdata: DataSharingServiceService) {
    }
   ngOnInit(): void {
@@ -51,9 +52,11 @@ export class GetBooksComponent implements OnInit {
   ViewBook(bookC:any)
   {
     this.bId = bookC.bookId;
+    localStorage.setItem('bookId', this.bId);    
     console.log(this.bId,"book");
     this.home.page = 'viewBook';
     this.home.bid = bookC;
+    this.router.navigate(['/book']);
   }
   Search()
   {
@@ -85,5 +88,25 @@ export class GetBooksComponent implements OnInit {
       
       return result.data.length;
     });
+  }
+  ChangeOrder(num:any)
+  {
+    console.log(this.returnedBooks,"retbooks");
+    if(num==0)
+    {
+      this.books = this.returnedBooks;
+    }
+    else if(num==1)
+    {
+      this.books = this.returnedBooks.sort((a:any, b:any) => (a.price < b.price ? -1 : 1));
+    }
+    else if(num==2){
+      this.books = this.returnedBooks.sort((a:any, b:any) => (a.price > b.price ? -1 : 1));
+    }
+    else{
+      this.books = this.returnedBooks.reverse();
+    }
+    console.log(this.returnedBooks,"after sort");
+    
   }
 }

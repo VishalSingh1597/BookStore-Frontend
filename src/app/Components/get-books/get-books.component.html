@@ -2,15 +2,15 @@
     <div class="row">
         <span class="titleRow">
             <h1>Books</h1>
-            <p style="color:#BEBEBE">&nbsp;({{books.length}} items)</p>
+            <p style="color:#BEBEBE">&nbsp;({{returnedBooks.length}} items)</p>
         </span>
         <span>
-            <!-- <select name="sort" id="sort" class="sortTag" #sel (change)="ChangeOrder(sel.value)">
+            <select name="sort" id="sort" class="sortTag" #sel (change)="ChangeOrder(sel.value)">
                 <option [disabled]="true">Sort by relevance</option>
                 <option value="1">Price: Low To High</option>
                 <option value="2">Price: High To Low</option>
                 <option value="3">Newest Arrival</option>
-            </select> -->
+            </select>
         </span>
     </div>
     <div class="allBooks">
@@ -37,7 +37,4 @@
             </mat-card>
         </div>
     </div>
-    <!-- <div class="paginator">
-        <pagination-controls class="pagi" (pageChange)="p = $event"></pagination-controls>
-    </div> -->
 </div>

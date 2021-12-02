@@ -1,0 +1,27 @@
+<div class="mainContainer">
+    <div class="row">
+        <div (click)="changePage()" style="color: #9C9C9C;cursor: pointer;">Home</div>
+        <div><span style="font-size: 18px;">/</span><span class="home">My Order</span></div>
+    </div>
+    <div class=" cardContainer">
+        <mat-card class="orderCard" *ngFor="let book of order">
+            <div class="orderBook">
+                <span>
+                    <img src="{{book.books.image}}" class="image" />
+                </span>
+                <div class="bookContent">
+                    <p class="bookTitle">{{book.books.bookName}}</p>
+                    <p class="bookAuthor">by {{book.books.authorName}}</p>
+                    <span class="price">
+                        <h2>₹&nbsp;{{book.books.price}}</h2>
+                        <p class="strike"><s>₹&nbsp;{{book.books.originalPrice}}</s></p>
+                    </span>
+                </div>
+            </div>
+            <div class="orderDate">
+                <mat-icon>circle</mat-icon>
+                <p>Order Placed on {{book.dateOfOrder}}</p>
+            </div>
+        </mat-card>
+    </div>
+</div>

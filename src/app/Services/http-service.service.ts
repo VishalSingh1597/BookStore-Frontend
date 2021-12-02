@@ -16,8 +16,8 @@ export class HttpServiceService {
 
   put(url:string,data:any=null,isHeaderRequired:any=false,headers:any=null)
   {
-    console.log("httpservice",url,data);
-    console.log(url,data+"value");
+    // console.log("httpservice",url,data);
+    // console.log(url,data+"value");
     return this.http.put(url,data,isHeaderRequired && headers)
   }
   get(url:string,data:any=null,isHeaderRequired:any=false,headers:any=false)

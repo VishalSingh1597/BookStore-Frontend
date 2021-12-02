@@ -1,0 +1,68 @@
+.row{
+    width: 80%; 
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-left: 10%;
+ }
+ 
+ .orderCard{
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+     align-items: start;
+     margin: 30px auto;
+     width: 80%;
+     border: 1px solid #E4E4E4;
+ }
+
+ .orderBook{
+     display: flex;
+     flex-direction: row;
+     justify-content: flex-start;
+ }
+
+ .bookContent{
+     margin: 10px;
+ }
+ .price{
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+ }
+ .strike{
+    color:#9C9C9C;
+    margin-left: 10px;
+}
+
+.bookTitle{
+    font-size: 18px;
+    font-weight: 450;
+}
+
+.bookAuthor{
+    color: #9C9C9C;
+    margin: 2px;
+}
+
+.orderDate{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 10px;
+    mat-icon{
+        font-size: 10px;
+        color: #26A541;
+    }
+    p{
+        font-size: 15px;
+        font: normal normal bold 15px/20px Roboto;
+    }
+}
+.image{
+    height: 120px;
+    margin: 10px;
+}

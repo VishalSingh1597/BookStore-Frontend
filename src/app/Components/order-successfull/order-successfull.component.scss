@@ -1,0 +1,52 @@
+.imageContainer{
+    width:25%;
+    margin: 0px auto;
+    margin-bottom: 30px;
+}
+
+mat-icon{
+    transform: scale(2);
+    color: #FFD02F;
+    margin: 30px;
+}
+.button{
+    width: 25%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+}
+.tableContainer{
+    display: flex;
+    justify-content: center;
+}
+.tableContent{
+    width: 70%;
+    background: #FFFFFF;
+    border: 1px solid #DCDCDC;
+}
+thead{
+    background: #FAFAFA;
+}
+th,td{
+    padding: 10px 30px;
+    border: 1px solid #DCDCDC;
+    border-collapse: collapse;
+}
+td{
+    width: 20%;
+}
+
+.summary{
+    font-size: 18px;
+    font-family: Lato, Regular;
+    text-align: center;
+}
+
+.imageContent{
+    margin-left: -60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 500px;
+    height: 300px;
+}

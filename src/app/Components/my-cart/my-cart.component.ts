@@ -22,6 +22,7 @@ export class MyCartComponent implements OnInit {
   CartList:any = [];
   OrderList:any=[];
   cartlength:any;
+  cartId:any;
   userDisable = true;
   addressDisable = true;
   userdetails:any;
@@ -35,6 +36,7 @@ export class MyCartComponent implements OnInit {
   openAddressDetail=false;
   check=false;
   price = 0;
+  
   ngOnInit(): void {
     this.getBooks(); 
     var user=JSON.parse(localStorage.getItem('userDetails')!);
@@ -70,20 +72,18 @@ export class MyCartComponent implements OnInit {
   }
   GetTotalPrice()
   {
-    console.log("Get total");
-    console.log(this.CartList,"cartlist");
     this.price = 0;
     this.CartList.forEach((x:any) => {
-      this.price = this.price + (x.bookOrderCount * x.books.price);
-      console.log(this.price,"price");
+      this.price = this.price + (1 * x.books.price);
+      
     });
-    console.log(this.price,"price");
+    console.log(this.price,"total price");
     
   }
-  RemoveCartItem(id:any)
+  RemoveCartItem(cartId:any)
   {
-    console.log(id);
-    this.bookService.RemoveCartItem(id).subscribe(
+    console.log(cartId);
+    this.bookService.RemoveCartItem(cartId).subscribe(
       (result:any)=>{
         this.snackBar.open(`Removed From Cart`, '', {
           duration: 3000,
@@ -96,7 +96,7 @@ export class MyCartComponent implements OnInit {
   }
   UpdateOrderCount(type:any,id:any)
   {
-    console.log(id);
+    console.log(id,"cartid");
     this.bookService.UpdateOrderCount(type,id).subscribe(
       (result:any)=>{
         this.statusdata.changeStatus(result.status);

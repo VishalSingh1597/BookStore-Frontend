@@ -17,6 +17,9 @@ export class HomeComponent implements OnInit {
   isBadgeHidden=true;
   cartlength:any;
   CartList: any;
+  firstName=localStorage.getItem("firstName");
+  lastName=localStorage.getItem("lastName");
+
 
   userdetails=JSON.parse(localStorage.getItem('userDetails')!);
   constructor(private router:Router,private statusdata: DataSharingServiceService,private bookService:BookServiceService) { }

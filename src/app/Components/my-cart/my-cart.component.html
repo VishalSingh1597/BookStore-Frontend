@@ -19,7 +19,8 @@
     <div class="cartContainer" *ngIf="showCart">
         <mat-card class="cartCard">
             <div class="cartTitle">
-                <h3>My cart ({{CartList.length}})</h3>
+                <h3>My cart </h3>
+                    <!-- ({{CartList.length}})</h3> -->
             </div>
             <div class="cartBookContent" *ngFor="let book of CartList">
                 <span>
@@ -37,6 +38,7 @@
                         <input type="text" class="countOfOrder" [disabled]="true" [(ngModel)]="book.bookOrderCount">
                         <span class="button" (click)="UpdateOrderCount(true,book.cartID)">+</span>
                         <button mat-button (click)="RemoveCartItem(book.cartID)">Remove</button>
+                        
                     </div>
                 </div>
             </div>

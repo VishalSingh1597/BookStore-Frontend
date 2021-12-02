@@ -1,3 +1,4 @@
+import { CloseScrollStrategy } from '@angular/cdk/overlay';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -5,6 +6,8 @@ import { BookServiceService } from 'src/app/Services/book-service.service';
 import { DataSharingServiceService } from 'src/app/Services/data-sharing.service';
 import { GetBooksComponent } from '../get-books/get-books.component';
 import { HomeComponent } from '../home/home.component';
+
+
 
 @Component({
   selector: 'app-book',
@@ -15,10 +18,10 @@ export class BookComponent implements OnInit {
   @Input() bid:any;
   @Input() cartItems:any;
   starRating = 0; 
-  bookId:any;
+  bookId:any=localStorage.getItem('bookId');
   CustomerFeedbackList:any;
   feedback:any;
-  book:any;
+  book:any=localStorage.getItem('bookId');
   bookPresent:any;
   //checkBook:boolean;
   userdetails=JSON.parse(localStorage.getItem('userDetails')!);
@@ -31,7 +34,7 @@ export class BookComponent implements OnInit {
   CheckBookInCart()
   {
     console.log("check");
-    this.bookPresent =  this.cartItems.find((x:any) => x.bookID == this.bid.bookId);
+    this.bookPresent =  this.cartItems.find((x:any) => x.bookID == this.bookId);
     if(this.bookPresent !=null)
     {
       
@@ -45,7 +48,9 @@ export class BookComponent implements OnInit {
   defaultColor = "#FFF";
   ngOnInit(): void 
   {
+    
     console.log(this.bid,"bookId in books");
+    this.getBooks();
     this.book = this.bid;
     this.GetFeedBack();
     console.log(this.cartItems,"cartItems");
@@ -64,11 +69,11 @@ export class BookComponent implements OnInit {
   
   getBooks()
   {
-    this.bookService.GetBookDetails(this.bid).subscribe(
+    this.bookService.GetBookDetails(this.bookId).subscribe(
       (result:any)=>
       {
         this.book = result.data;
-        console.log(this.book);
+        console.log(result);
     });
   }
   AddToWishList(book:any)
@@ -84,8 +89,9 @@ export class BookComponent implements OnInit {
     }
     else
     {
-      console.log(book,this.userdetails.customerId,"bc");
-      this.bookService.AddToWishList(book,this.userdetails.customerId).subscribe(
+        
+      // console.log(book,this.userdetails.userId,"bc");
+      this.bookService.AddToWishList(book,5).subscribe(
         (result:any)=>{
           this.snackBar.open(`${result.message}`, '', {
             duration: 3000,
@@ -109,9 +115,9 @@ AddToCart(book:any)
   }
   else
   {
-    console.log(book,this.userdetails.customerId,"bc");
+    console.log(book,this.userdetails.uid,"bc");
     
-    this.bookService.AddToCart(book,this.userdetails.customerId).subscribe(
+    this.bookService.AddToCart(book,this.userdetails.userId).subscribe(
       (result:any)=>{
         this.snackBar.open(`${result.message}`, '', {
           duration: 3000,
@@ -126,7 +132,7 @@ AddToCart(book:any)
 
   GetFeedBack()
   {
-    this.bookService.GetCustomerFeedBack(this.book.bookId).subscribe((result:any)=>{
+    this.bookService.GetCustomerFeedBack(this.bookId).subscribe((result:any)=>{
       console.log(result.data,"getCustomer");
       //console.log();
       
@@ -144,7 +150,7 @@ AddToCart(book:any)
     {
       feedback:this.feedback,
       rating:this.starRating,
-      userId:this.userdetails.customerId,
+      userId:5,
       bookId:this.book.bookId
     }
     this.bookService.AddCustomerFeedBack(param).subscribe((result:any)=>{

@@ -17,10 +17,10 @@
                 (click)="show()">
                 <mat-icon class="material-icons-outlined" style="font-size: 27px;  color: #FFFF;
                 font-weight: light;">person_outline</mat-icon><br>
-                <p class="noteTitle">{{userdetails != null?
-                    userdetails.customerName:'Profile'}}</p><br>
+                <p class="noteTitle">{{firstName != null?
+                    firstName+""+lastName:'Profile'}}</p><br>
             </button>
-        </div>
+        </div> 
         <div class="icon">
             <button mat-icon-button class="example-icon favorite-icon iconbutton" (click)="page='myCart'">
                 <mat-icon class="material-icons-outlined" style="font-size: 22px;color: #EDD8DA;" matBadge="{{cartlength}}"
@@ -39,17 +39,40 @@
             <button mat-stroked-button style="margin-bottom: 4px;" class="matmenuLoginbutton"
                 [routerLink]="['/login']">LOGIN/SIGNUP</button>
             <mat-divider style="margin:10px 5px;"></mat-divider>
-        </div>        
+            <div class="matmenuIcons">
+                <mat-icon mat-list-icon class="maticon" style="margin-right: 3px;">card_travel</mat-icon>
+                <h4 mat-line class="maticon">My Orders</h4>
+            </div>
+            <div class="matmenuIcons" style="margin-top: -10px;" (click)="page='wishList'">
+                <mat-icon mat-list-icon class="maticon" style="margin-right: 3px;">favorite_border</mat-icon>
+                <h4 mat-line class="maticon">WishList</h4>
+            </div>
+        </div>
+        <div *ngIf="userdetails != null">
+            <h1 style="font-size: 16px;margin: 0;font-weight: 700;">Hello {{userdetails.customerName}}</h1>
+            <div class="matmenuIcons" (click)="page='userProfile'">
+                <mat-icon mat-list-icon class="maticon" style="margin-right: 10px;">person_outline</mat-icon>
+                <h4 mat-line class="maticon">Profile</h4>
+            </div>
+
+            <div class="matmenuIcons" style="margin-top: -10px;" (click)="page='wishList'">
+                <mat-icon mat-list-icon class="maticon" style="margin-right: 10px;">favorite_border</mat-icon>
+                <h4 mat-line class="maticon">WishList</h4>
+            </div>
+            <button mat-stroked-button style="margin-bottom: 4px;width:110px" class="matmenuLoginbutton"
+                (click)="Logout()">LOGOUT</button>
+        </div>
     </div>
 </mat-menu>
 <div class="homeBody">
-    <app-get-books [bookName]="code.value.toLowerCase()" *ngIf="page=='allBooks'"></app-get-books> 
+    <app-get-books [bookName]="code.value.toLowerCase()" *ngIf="page=='allBooks'"></app-get-books>
     <app-wish-list *ngIf="page=='wishList'"></app-wish-list>
     <app-user-profile *ngIf="page=='userProfile'"></app-user-profile>
     <app-book [bid]="bid" [cartItems] = "CartList" *ngIf="page=='viewBook'"></app-book>
     <app-my-cart *ngIf="page=='myCart'"></app-my-cart>
-
-</div> 
+    <app-my-order *ngIf="page=='orders'"></app-my-order>
+    <app-order-successfull *ngIf="page=='orderSuccessful'"></app-order-successfull>
+</div>
 <footer class="footer">
     CopyRight &copy; 2021 Cohort B private limited. All rights received
 </footer>

@@ -10,7 +10,7 @@ export class BookServiceService {
 
   constructor(private httpService:HttpServiceService , private router:Router) { }
   userdetails=JSON.parse(localStorage.getItem('userDetails')!);
-  uid = this.userdetails.userId;
+  uid = parseInt(localStorage.getItem("userId")!)
   // header = {
   //   headers:{ Authorization:"Bearer " + JSON.parse(localStorage.getItem('token')!)}
   // };
@@ -24,33 +24,34 @@ export class BookServiceService {
   }
   GetWishList()
   {
-    return this.httpService.get(`${environment.baseUrl}/api/WishList/getwishlist?userId=${this.userdetails==null?null:this.userdetails.customerId}`,null,true,this.header);
+    return this.httpService.get(`${environment.baseUrl}/api/WishList/getwishlist?userId=5`,null,true,this.header);
   }
   GetCartItem()
   {
    
-    return this.httpService.get(`${environment.baseUrl}/api/Cart/GetCartItem?userId=${this.userdetails==null?null:this.userdetails.customerId}`,null,true,this.header);
+    return this.httpService.get(`${environment.baseUrl}/api/Cart/GetCartItem?userId=5`,null,true,this.header);
   }
   GetBookDetails(id:any)
   {
-    return this.httpService.post(`${environment.baseUrl}/api/Book/GetBookDetail?`,id,true,this.header);
+    return this.httpService.get(`${environment.baseUrl}/api/Book/GetBookDetail?bookId=${id}`,true,this.header);
   }
   AddToWishList(book:any,uid:any)
   {
     const params ={
       BookId:book.bookId,
-      UserId:uid
+      UserId:5
     }
-    console.log("wishlist:"+params);
-    console.log("token:"+this.header);
+  console.log("params",params);
+  
     return this.httpService.post(`${environment.baseUrl}/api/WishList/AddToWishList`,params,true,this.header);
   }
   AddToCart(book:any,uid:any)
   {
     const params={
       BookID:book.bookId,
-      UserId:uid,
-      BookOrderCount:1
+      UserId:5,
+      BookOrderCount:1,
+
     }
     console.log("wishlist:"+params);
     return this.httpService.post(`${environment.baseUrl}/api/Cart/AddToCart`,params,true,this.header);
@@ -71,6 +72,8 @@ export class BookServiceService {
       CartID:id,
       type:type
     }
+    console.log(params);
+    
     return this.httpService.put(`${environment.baseUrl}/api/Cart/UpadetOrderCount`,params,true,this.header);
   }
   PlaceOrder(CartList:any)

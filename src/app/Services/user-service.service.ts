@@ -51,7 +51,7 @@ export class UserServiceService {
     return this.httpService.put(`${environment.baseUrl}/api/Users/resetpassword`,params);
   }
   GetUserAddress(userId:any){
-    return this.httpService.get(`${environment.baseUrl}/api/Address/getUserAddress?userId=${userId}`);
+    return this.httpService.get(`${environment.baseUrl}/api/Address/getUserAddress?userId=5`);
   }
   EditAddress(data:any, addressId: any,userId:any){
     const params = {
@@ -83,6 +83,6 @@ export class UserServiceService {
       Type:data.type,
       UserId:userId
     }
-    return this.httpService.post(`${environment.baseUrl}/api/Address/AddUserAddress`,params);
+    return this.httpService.post(`${environment.baseUrl}/api/Address/AddUserAddress?userId=5`,params);
   }
 }

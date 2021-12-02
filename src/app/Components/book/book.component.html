@@ -1,8 +1,9 @@
+
 <div class="Content">
     <div class="Container">
         <div class="navigatebuttons">
             <span (click)="changePage()" class="homebutton">Home/</span>
-            <span class="book">Book ({{book.bookId}})</span>
+            <span class="book">Book ({{bookId}})</span>
         </div>
         <div class="BookPage">
             <div class="images">
@@ -39,7 +40,7 @@
                         <span class="bookRating">
                             {{book.rating}} ★
                         </span>
-                        <span class="count">({{reviews.length}})</span>
+                        <span class="count">({{reviews}})</span>
                     </span>
                     <span class="price">
                         <p class="bookprice">₹&nbsp;{{book.price}}</p>
